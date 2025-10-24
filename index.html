@@ -51,6 +51,11 @@
       .menu-btn{display:inline-flex}
     }
 
+    /* Language toggle */
+    .lang-toggle{display:inline-flex;gap:6px;margin-left:10px}
+    .lang-btn{background:#0e1320;border:1px solid #2a3244;color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer;font-weight:600}
+    .lang-btn[aria-pressed="true"]{outline:2px solid var(--brand);}
+
     /* Hero */
     .hero{padding:56px 24px 24px}
     .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
@@ -138,6 +143,10 @@
       </a>
       <nav>
         <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu ▾</button>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        </div>
         <ul id="menu" role="menu">
           <li><a href="#services">Services</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -326,6 +335,188 @@
 
     // Year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    // i18n language toggle
+    (function(){
+      const t = {
+        en: {
+          title: 'Veronique Renovations | Home Renovation & Remodeling',
+          nav: ['Services','Projects','About','Contact','Free Estimate'],
+          badge: 'Before → After • Quality you can see',
+          heroH1: 'Transforming homes with style and precision.',
+          heroLead: 'Kitchens, bathrooms, basements, and exterior makeovers. Locally owned, detail‑obsessed, and fully insured. Get a free, no‑pressure estimate.',
+          heroCta: 'Book a consultation',
+          heroGhost: 'See our work',
+          trust: ['⭐ 5‑Star Rated','🧰 Licensed & Insured','⏱ On‑time delivery','🧼 Clean job sites'],
+          servicesTitle: 'Services',
+          servicesSub: 'Full‑service renovations with clear scopes, transparent pricing, and craftsmanship that lasts.',
+          svc1H: 'Kitchen Remodels',
+          svc1P: 'Cabinetry, counters, flooring, lighting, layout improvements, and smart storage.',
+          svc1Chip: 'Typical timeline: 2–4 weeks',
+          svc2H: 'Bathroom Upgrades',
+          svc2P: 'Tile, tubs & showers, vanities, heated floors, waterproofing, and ventilation.',
+          svc2Chip: 'Typical timeline: 1–3 weeks',
+          svc3H: 'Basements & Exteriors',
+          svc3P: 'Basement bedrooms & family rooms, painting, siding accents, soffits & fascia.',
+          svc3Chip: 'Typical timeline: Varies',
+          projectsTitle: 'Recent Projects',
+          projectsSub: 'A quick look at transformations. Swap these placeholders with your own images and captions.',
+          cap1:'Modern kitchen refresh', cap2:'Spa‑style bathroom', cap3:'Cozy basement suite', cap4:'Exterior repaint', cap5:'Open‑concept living', cap6:'Bright dining nook',
+          kindTitle: 'Kind Words',
+          q1:'“Professional, punctual, and the quality is outstanding. We love our new kitchen!”',
+          q2:'“Clear communication and on‑time delivery. The before/after difference is unbelievable.”',
+          q3:'“Attention to detail on every step. We’ll definitely hire again.”',
+          aboutTitle: 'About',
+          aboutH1: 'Our Philosophy',
+          aboutP1: 'We believe great renovations combine thoughtful design, durable materials, and craftsmanship. What started as a personal passion project became a business focused on delivering reliable, beautiful results—on time and on budget.',
+          aboutH2: 'Why Choose Us',
+          aboutList: ['Clear, itemized quotes','Respect for your time & space','Licensed & insured','Warranty on workmanship'],
+          aboutH3: 'Service Area',
+          aboutP3: 'Based in Your City, QC. Serving surrounding areas. Get in touch to confirm your location.',
+          contactTitle: 'Get a Free Estimate',
+          contactSub: 'Tell us a bit about your project and we’ll get back to you within 1–2 business days.',
+          formName: 'Your name', formEmail: 'Email', formPhone: 'Phone (optional)', formService: 'Service', formDetails: 'Project details',
+          optKitchen:'Kitchen', optBathroom:'Bathroom', optBasement:'Basement', optExterior:'Exterior', optOther:'Other',
+          detailsPH: 'Tell us about your timeline, style, and budget range.',
+          send: 'Send request', formNote:'Powered by Formspree on the free tier. Replace the action URL with your own form endpoint.',
+          asideContact:'Contact', asideHours:'Hours', asideFollow:'Follow',
+          asideEmail:'Email:', asidePhone:'Phone:', asideHoursText:'Mon–Fri: 8:00–17:00
+Sat: By appointment', asideNote:'Add your Google Business Profile link for reviews & local SEO.'
+        },
+        fr: {
+          title: 'Veronique Rénovations | Rénovation résidentielle',
+          nav: ['Services','Projets','À propos','Contact','Soumission gratuite'],
+          badge: 'Avant → Après • Une qualité visible',
+          heroH1: 'Transformer les maisons avec style et précision.',
+          heroLead: 'Cuisines, salles de bain, sous‑sols et rénovations extérieures. Entreprise locale, souci du détail, entièrement assurée. Obtenez une soumission sans pression.',
+          heroCta: 'Réserver une consultation',
+          heroGhost: 'Voir nos réalisations',
+          trust: ['⭐ Cote 5 étoiles','🧰 Licencié et assuré','⏱ Respect des délais','🧼 Chantiers propres'],
+          servicesTitle: 'Services',
+          servicesSub: 'Rénovations clés en main avec portées claires, tarification transparente et savoir‑faire durable.',
+          svc1H: 'Rénovations de cuisine',
+          svc1P: 'Armoires, comptoirs, planchers, éclairage, optimisation du plan et rangement intelligent.',
+          svc1Chip: 'Durée typique : 2–4 semaines',
+          svc2H: 'Salles de bain',
+          svc2P: 'Céramique, bains et douches, vanités, planchers chauffants, étanchéité et ventilation.',
+          svc2Chip: 'Durée typique : 1–3 semaines',
+          svc3H: 'Sous‑sols & Extérieur',
+          svc3P: 'Chambres et salles familiales au sous‑sol, peinture, accents de revêtement, soffites et fascia.',
+          svc3Chip: 'Durée typique : Variable',
+          projectsTitle: 'Projets récents',
+          projectsSub: 'Un aperçu des transformations. Remplacez ces images et légendes par vos projets.',
+          cap1:'Cuisine moderne rafraîchie', cap2:'Salle de bain style spa', cap3:'Suite de sous‑sol chaleureuse', cap4:'Reprise de peinture extérieure', cap5:'Aire ouverte lumineuse', cap6:'Coin repas lumineux',
+          kindTitle: 'Témoignages',
+          q1:'« Professionnel, ponctuel et une qualité remarquable. On adore notre nouvelle cuisine! »',
+          q2:'« Communication claire et livraison à temps. La différence avant/après est incroyable. »',
+          q3:'« Un souci du détail à chaque étape. Nous referons affaire avec eux. »',
+          aboutTitle: 'À propos',
+          aboutH1: 'Notre philosophie',
+          aboutP1: 'Nous croyons que de bonnes rénovations allient design réfléchi, matériaux durables et savoir‑faire. D’un projet personnel est née une entreprise dédiée à livrer des résultats fiables et magnifiques — à temps et selon le budget.',
+          aboutH2: 'Pourquoi nous choisir',
+          aboutList: ['Soumissions détaillées et claires','Respect de votre temps et de votre espace','Licencié et assuré','Garantie sur la main‑d’œuvre'],
+          aboutH3: 'Territoire desservi',
+          aboutP3: 'Basés à Your City, QC. Nous desservons les environs. Contactez‑nous pour confirmer votre secteur.',
+          contactTitle: 'Obtenez une soumission gratuite',
+          contactSub: 'Parlez‑nous de votre projet et nous vous répondrons sous 1 à 2 jours ouvrables.',
+          formName: 'Votre nom', formEmail: 'Courriel', formPhone: 'Téléphone (optionnel)', formService: 'Service', formDetails: 'Détails du projet',
+          optKitchen:'Cuisine', optBathroom:'Salle de bain', optBasement:'Sous‑sol', optExterior:'Extérieur', optOther:'Autre',
+          detailsPH: 'Parlez‑nous de votre échéancier, de votre style et de votre budget.',
+          send: 'Envoyer la demande', formNote:'Propulsé par Formspree (forfait gratuit). Remplacez l’URL par votre point de terminaison.',
+          asideContact:'Contact', asideHours:'Heures', asideFollow:'Suivez‑nous',
+          asideEmail:'Courriel :', asidePhone:'Téléphone :', asideHoursText:'Lun–Ven : 8 h à 17 h
+Sam : Sur rendez‑vous', asideNote:'Ajoutez le lien Google Business pour les avis et le SEO local.'
+        }
+      };
+
+      function setText(sel, value){ const el = document.querySelector(sel); if(el){ el.textContent = value; } }
+      function setHTML(sel, value){ const el = document.querySelector(sel); if(el){ el.innerHTML = value; } }
+
+      function applyLang(lang){
+        const L = t[lang];
+        document.documentElement.setAttribute('lang', lang);
+        document.title = L.title;
+        // nav labels
+        const items = document.querySelectorAll('#menu li a');
+        if(items.length>=5){ items[0].textContent=L.nav[0]; items[1].textContent=L.nav[1]; items[2].textContent=L.nav[2]; items[3].textContent=L.nav[3]; items[4].textContent=L.nav[4]; }
+        // hero
+        setText('.badge', L.badge);
+        setText('.hero-inner h1', L.heroH1);
+        setText('.lead', L.heroLead);
+        setText('.hero-actions .cta', L.heroCta);
+        setText('.hero-actions .ghost', L.heroGhost);
+        const trust = document.querySelectorAll('.trust div');
+        trust.forEach((d,i)=>{ if(L.trust[i]) d.textContent=L.trust[i]; });
+        // services
+        setText('#services .section-title', L.servicesTitle);
+        setText('#services .section-sub', L.servicesSub);
+        const svcCards = document.querySelectorAll('#services .card');
+        if(svcCards.length===3){
+          svcCards[0].querySelector('h3').textContent=L.svc1H; svcCards[0].querySelector('p').textContent=L.svc1P; svcCards[0].querySelector('.chip').textContent=L.svc1Chip;
+          svcCards[1].querySelector('h3').textContent=L.svc2H; svcCards[1].querySelector('p').textContent=L.svc2P; svcCards[1].querySelector('.chip').textContent=L.svc2Chip;
+          svcCards[2].querySelector('h3').textContent=L.svc3H; svcCards[2].querySelector('p').textContent=L.svc3P; svcCards[2].querySelector('.chip').textContent=L.svc3Chip;
+        }
+        // projects
+        setText('#projects .section-title', L.projectsTitle);
+        setText('#projects .section-sub', L.projectsSub);
+        const caps = document.querySelectorAll('#projects figcaption');
+        [L.cap1,L.cap2,L.cap3,L.cap4,L.cap5,L.cap6].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
+        // testimonials
+        const kindTitle = document.querySelectorAll('section.container .section-title');
+        if(kindTitle[2]) kindTitle[2].textContent = L.kindTitle; // assumes order
+        const q = document.querySelectorAll('.grid .card .quote');
+        if(q[0]) q[0].textContent=L.q1; if(q[1]) q[1].textContent=L.q2; if(q[2]) q[2].textContent=L.q3;
+        // about
+        setText('#about .section-title', L.aboutTitle);
+        const aboutCards = document.querySelectorAll('#about .card');
+        if(aboutCards.length===3){
+          aboutCards[0].querySelector('h3').textContent=L.aboutH1; aboutCards[0].querySelector('p').textContent=L.aboutP1;
+          aboutCards[1].querySelector('h3').textContent=L.aboutH2; const lis = aboutCards[1].querySelectorAll('li'); L.aboutList.forEach((v,i)=>{ if(lis[i]) lis[i].textContent=v; });
+          aboutCards[2].querySelector('h3').textContent=L.aboutH3; aboutCards[2].querySelector('p').textContent=L.aboutP3;
+        }
+        // contact
+        setText('#contact .section-title', L.contactTitle);
+        setText('#contact .section-sub', L.contactSub);
+        const form = document.querySelector('#contact form');
+        if(form){
+          form.querySelector('label:nth-of-type(1)').childNodes[0].textContent = L.formName+'
+';
+          form.querySelector('label:nth-of-type(2)').childNodes[0].textContent = L.formEmail+'
+';
+          form.querySelector('label:nth-of-type(3)').childNodes[0].textContent = L.formPhone+'
+';
+          form.querySelector('label:nth-of-type(4)').childNodes[0].textContent = L.formService+'
+';
+          form.querySelector('label:nth-of-type(5)').childNodes[0].textContent = L.formDetails+'
+';
+          const opts = form.querySelectorAll('select option');
+          if(opts.length>=5){ opts[0].textContent=L.optKitchen; opts[1].textContent=L.optBathroom; opts[2].textContent=L.optBasement; opts[3].textContent=L.optExterior; opts[4].textContent=L.optOther; }
+          const ta = form.querySelector('textarea'); if(ta) ta.setAttribute('placeholder', L.detailsPH);
+          const btn = form.querySelector('button[type=submit]'); if(btn) btn.textContent=L.send;
+          const note = form.querySelector('.note'); if(note) note.textContent=L.formNote;
+        }
+        const aside = document.querySelector('#contact aside');
+        if(aside){
+          aside.querySelector('h3:nth-of-type(1)').textContent=L.asideContact;
+          aside.querySelector('p:nth-of-type(1)').innerHTML = `<strong>${L.asideEmail}</strong> hello@yourdomain.ca<br/><strong>${L.asidePhone}</strong> +1 (555) 555‑5555`;
+          aside.querySelector('h3:nth-of-type(2)').textContent=L.asideHours;
+          aside.querySelector('p:nth-of-type(2)').textContent=L.asideHoursText;
+          aside.querySelector('h3:nth-of-type(3)').textContent=L.asideFollow;
+          const note2 = aside.querySelector('p.note'); if(note2) note2.textContent = L.asideNote;
+        }
+      }
+
+      // toggle UI
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(b=> b.addEventListener('click', ()=>{
+        const lang = b.dataset.lang;
+        langBtns.forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+        applyLang(lang);
+        try{ localStorage.setItem('site-lang', lang); }catch(e){}
+      }));
+
+      const saved = (function(){try{return localStorage.getItem('site-lang');}catch(e){return null;}})();
+      applyLang(saved||'en');
+    })();
+</script>
 </body>
 </html>
