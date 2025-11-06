@@ -89,11 +89,6 @@
     .ba input[type=range]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brand);border:2px solid #0b1020;box-shadow:0 0 0 3px rgba(110,231,183,.35)}
     .ba input[type=range]::-webkit-slider-runnable-track{height:4px;background:#2a3244}
 
-    .ba .label{position:absolute;top:10px;padding:4px 8px;border-radius:999px;background:rgba(21,25,35,.85);border:1px solid #2a3244;font-size:.8rem;color:var(--muted)}
-    .ba .label-before{left:10px}
-    .ba .label-after{right:10px}
-
-
     /* Gallery */
     .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
     .gallery figure{margin:0}
@@ -219,32 +214,18 @@
     <!-- Projects -->
     <section id="projects" class="container">
       <h2 class="section-title">Recent Projects</h2>
-      <p class="section-sub">A quick look at transformations!</p>
+      <p class="section-sub">A quick look at transformations. Swap these placeholders with your own images and captions.</p>
       <div class="gallery">
-      <figure>
-          <div class="ba" aria-label="Before and after slider">
-            <span class="label label-before">Before</span>
-            <span class="label label-after">After</span>
-            <img alt="Boys bedroom before" src="images\ZackBefore.JPEG?q=80&w=1200&auto=format&fit=crop" />
-            <img class="after" alt="Modern bedroom after" src="images\ZackAfter.JPEG?q=80&w=1200&auto=format&fit=crop" />
-            <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          </div>
-          <figcaption class="note">Updated Room</figcaption>
-        </figure>
-        <figure>
-          <div class="ba" aria-label="Before and after slider">
-            <span class="label label-before">Before</span>
-            <span class="label label-after">After</span>
-            <img alt="Spa‑style bathroom before" src="images\MelBefore.jpg?q=80&w=1200&auto=format&fit=crop" />
-            <img class="after" alt="Spa‑style bathroom after" src="images\MelAfter.JPEG?q=80&w=1200&auto=format&fit=crop" />
-            <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
-          </div>
-          <figcaption class="note">New and Updated Room</figcaption>
-        </figure>
-    </div>
+        <figure><img alt="Project 1" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Modern kitchen refresh</figcaption></figure>
+        <figure><img alt="Project 2" src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Spa‑style bathroom</figcaption></figure>
+        <figure><img alt="Project 3" src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Cozy basement suite</figcaption></figure>
+        <figure><img alt="Project 4" src="https://images.unsplash.com/photo-1499914485622-a88fac536970?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Exterior repaint</figcaption></figure>
+        <figure><img alt="Project 5" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Open‑concept living</figcaption></figure>
+        <figure><img alt="Project 6" src="https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1200&auto=format&fit=crop"><figcaption class="note">Bright dining nook</figcaption></figure>
+      </div>
     </section>
 
-    <!-- Testimonials 
+    <!-- Testimonials -->
     <section class="container">
       <h2 class="section-title">Kind Words</h2>
       <div class="grid">
@@ -253,7 +234,7 @@
         <article class="card"><p class="quote">“Attention to detail on every step. We’ll definitely hire again.”</p><p class="note">— S. Roy</p></article>
       </div>
     </section>
--->
+
     <!-- About -->
     <section id="about" class="container">
       <h2 class="section-title">About</h2>
@@ -310,17 +291,17 @@
         </form>
         <aside class="card">
           <h3>Contact</h3>
-          <p><strong>Email:</strong> veroniquefugere78@gmail.com<br/>
-             <strong>Phone:</strong> +1 (514) 730-6609</p>
+          <p><strong>Email:</strong> hello@yourdomain.ca<br/>
+             <strong>Phone:</strong> +1 (555) 555‑5555</p>
           <h3>Hours</h3>
           <p>Mon–Fri: 8:00–17:00<br/>Sat: By appointment</p>
-          <!-- <h3>Follow</h3>
+          <h3>Follow</h3>
           <p class="social">
             <a href="#" aria-label="Facebook">🔗 Facebook</a>
             <a href="#" aria-label="Instagram">🔗 Instagram</a>
             <a href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
           </p>
-          <p class="note">Add your Google Business Profile link for reviews & local SEO.</p> -->
+          <p class="note">Add your Google Business Profile link for reviews & local SEO.</p>
         </aside>
       </div>
     </section>
@@ -342,18 +323,14 @@
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
-    // Before/After slider logic (supports multiple sliders including hero)
-    const bas = document.querySelectorAll('.ba');
-    bas.forEach(ba => {
-      const afterImg = ba.querySelector('.after');
-      const slider = ba.querySelector('input[type=range]');
-      if(!afterImg || !slider) return;
-      const update = () => {
-        const v = parseInt(slider.value, 10) || 0;
-        afterImg.style.clipPath = `inset(0 0 0 ${v}%)`;
-      };
-      slider.addEventListener('input', update);
-      update();
+    // Before/After slider logic
+    const ba = document.querySelector('.ba');
+    const afterImg = ba?.querySelector('.after');
+    const slider = ba?.querySelector('input[type=range]');
+    slider?.addEventListener('input', (e) => {
+      const v = e.target.value; // 0..100
+      const left = 100 - v;     // reveal amount for after image
+      afterImg.style.clipPath = `inset(0 0 0 ${v}%)`;
     });
 
     // Year in footer
@@ -366,7 +343,7 @@
           nav: ['Services','Projects','About','Contact','Free Estimate'],
           badge: 'Before → After • Quality you can see',
           heroH1: 'Transforming homes with style and precision.',
-          heroLead: 'Kitchens, bathrooms, basements, and exterior makeovers. locally owned and detail‑obsessed. Get a free, no‑pressure estimate.',
+          heroLead: 'Kitchens, bathrooms, basements, and exterior makeovers. Locally owned, detail‑obsessed, and fully insured. Get a free, no‑pressure estimate.',
           heroCta: 'Book a consultation',
           heroGhost: 'See our work',
           trust: ['⏱ On‑time delivery','🧼 Clean job sites'],
@@ -383,9 +360,8 @@
           svc3P: 'Basement bedrooms & family rooms, painting, siding accents, soffits & fascia.',
           svc3Chip: 'Typical timeline: Varies',
           projectsTitle: 'Recent Projects',
-          projectsSub: 'A quick look at transformations!',
-          cap1:'Boys bedroom total makeover', cap2:'New room, new look!', before:'Before', after:'After',
-//          cap1:'Boys bedroom total makeover', cap2:'New room, new look!', cap3:'Cozy stylish roombasement suite', cap4:'Exterior repaint', cap5:'Open‑concept living', cap6:'Bright dining nook', before:'Before', after:'After',
+          projectsSub: 'A quick look at transformations. Swap these placeholders with your own images and captions.',
+          cap1:'Modern kitchen refresh', cap2:'Spa‑style bathroom', cap3:'Cozy basement suite', cap4:'Exterior repaint', cap5:'Open‑concept living', cap6:'Bright dining nook',
           kindTitle: 'Kind Words',
           q1:'“Professional, punctual, and the quality is outstanding. We love our new kitchen!”',
           q2:'“Clear communication and on‑time delivery. The before/after difference is unbelievable.”',
@@ -411,7 +387,7 @@
           nav: ['Services','Projets','À propos','Contact','Soumission gratuite'],
           badge: 'Avant → Après • Une qualité visible',
           heroH1: 'Transformer les maisons avec style et précision.',
-          heroLead: 'Cuisines, salles de bain, sous‑sols et rénovations extérieures. Entreprise locale et souci du détail. Obtenez une soumission sans pression.',
+          heroLead: 'Cuisines, salles de bain, sous‑sols et rénovations extérieures. Entreprise locale, souci du détail, entièrement assurée. Obtenez une soumission sans pression.',
           heroCta: 'Réserver une consultation',
           heroGhost: 'Voir nos réalisations',
           //trust: ['⭐ Cote 5 étoiles','🧰 Licencié et assuré','⏱ Respect des délais','🧼 Chantiers propres'],
@@ -429,8 +405,7 @@
           svc3Chip: 'Durée typique : Variable',
           projectsTitle: 'Projets récents',
           projectsSub: 'Un aperçu des transformations. Remplacez ces images et légendes par vos projets.',
-          cap1:'Chambre moderne rafraîchie', cap2:'Nouvelle chambre, nouveau look!', before:'Avant', after:'Après',
- //         cap1:'Chambre moderne rafraîchie', cap2:'Nouvelle chambre, nouveau look!', cap3:'Suite de sous‑sol chaleureuse', cap4:'Reprise de peinture extérieure', cap5:'Aire ouverte lumineuse', cap6:'Coin repas lumineux', before:'Avant', after:'Après',
+          cap1:'Cuisine moderne rafraîchie', cap2:'Salle de bain style spa', cap3:'Suite de sous‑sol chaleureuse', cap4:'Reprise de peinture extérieure', cap5:'Aire ouverte lumineuse', cap6:'Coin repas lumineux',
           kindTitle: 'Témoignages',
           q1:'« Professionnel, ponctuel et une qualité remarquable. On adore notre nouvelle cuisine! »',
           q2:'« Communication claire et livraison à temps. La différence avant/après est incroyable. »',
@@ -484,13 +459,7 @@
         setText('#projects .section-title', L.projectsTitle);
         setText('#projects .section-sub', L.projectsSub);
         const caps = document.querySelectorAll('#projects figcaption');
-        [L.cap1,L.cap2].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
-        document.querySelectorAll('#projects .ba .label-before').forEach(el=> el.textContent = L.before);
-        document.querySelectorAll('#projects .ba .label-after').forEach(el=> el.textContent = L.after);
-//        const caps = document.querySelectorAll('#projects figcaption');
-//       [L.cap1,L.cap2,L.cap3,L.cap4,L.cap5,L.cap6].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
-//        document.querySelectorAll('#projects .ba .label-before').forEach(el=> el.textContent = L.before);
-//        document.querySelectorAll('#projects .ba .label-after').forEach(el=> el.textContent = L.after);
+        [L.cap1,L.cap2,L.cap3,L.cap4,L.cap5,L.cap6].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
         // testimonials
         const kindTitle = document.querySelectorAll('section.container .section-title');
         if(kindTitle[2]) kindTitle[2].textContent = L.kindTitle; // assumes order
@@ -523,7 +492,7 @@
         const aside = document.querySelector('#contact aside');
         if(aside){
           aside.querySelector('h3:nth-of-type(1)').textContent=L.asideContact;
-          aside.querySelector('p:nth-of-type(1)').innerHTML = `<strong>${L.asideEmail}</strong> veroniquevufere78@gmail.com<br/><strong>${L.asidePhone}</strong> +1 (514) 730-6609`;
+          aside.querySelector('p:nth-of-type(1)').innerHTML = `<strong>${L.asideEmail}</strong> hello@yourdomain.ca<br/><strong>${L.asidePhone}</strong> +1 (555) 555‑5555`;
           aside.querySelector('h3:nth-of-type(2)').textContent=L.asideHours;
           aside.querySelector('p:nth-of-type(2)').textContent=L.asideHoursText;
           aside.querySelector('h3:nth-of-type(3)').textContent=L.asideFollow;
