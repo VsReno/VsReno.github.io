@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Veronique Renovations | Home Improvements & Remodeling</title>
+  <meta name="description" content="Quality home improvements: kitchens, bathrooms, basements, exteriors. Free estimates. Serving your city and surrounding areas." />
+  <meta name="author" content="Veronique Renovations" />
+  <meta property="og:title" content="Veronique Renovations" />
+  <meta property="og:description" content="Before & after transformations you’ll love. Kitchens • Bathrooms • Basements • Exteriors." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Veronique+Renovations" />
+  <meta property="og:url" content="https://your-domain.example" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🏠</text></svg>">
+
+  <style>
+    :root{
+      --bg:#0f1115;           /* page background */
+      --surface:#151923;      /* cards/nav/footer */
+      --text:#ecf2ff;         /* main text */
+      --muted:#b7c1d6;        /* secondary text */
+      --brand:#6ee7b7;        /* mint accent */
+      --brand-2:#60a5fa;      /* blue accent */
+      --danger:#ef4444;       /* error color */
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    a{color:var(--brand-2);text-decoration:none}
+    img{max-width:100%;display:block;border-radius:12px}
+    .container{max-width:var(--max);margin-inline:auto;padding:24px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(21,25,35,0.95), rgba(21,25,35,0.8));backdrop-filter: blur(6px);}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .brand .logo{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand-2));box-shadow:var(--shadow)}
+    .brand span{font-size:1.05rem}
+    nav ul{list-style:none;display:flex;gap:18px;padding:0;margin:0}
+    nav a{color:var(--text);opacity:.9}
+    nav a:hover{opacity:1;color:var(--brand)}
+    .cta{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b1020;border:0;padding:10px 16px;border-radius:999px;font-weight:700;box-shadow:var(--shadow)}
+
+    /* Mobile nav */
+    .menu-btn{display:none;background:none;border:1px solid #2a3244;color:var(--text);padding:6px 10px;border-radius:10px}
+    @media (max-width:820px){
+      nav ul{display:none}
+      nav ul.open{display:flex;flex-direction:column;position:absolute;right:16px;top:62px;background:var(--surface);padding:14px 18px;border-radius:12px;box-shadow:var(--shadow)}
+      .menu-btn{display:inline-flex}
+    }
+
+    /* Language toggle */
+    .lang-toggle{display:inline-flex;gap:6px;margin-left:10px}
+    .lang-btn{background:#0e1320;border:1px solid #2a3244;color:var(--text);padding:6px 10px;border-radius:10px;cursor:pointer;font-weight:600}
+    .lang-btn[aria-pressed="true"]{outline:2px solid var(--brand);}
+
+    /* Hero */
+    .hero{padding:56px 24px 24px}
+    .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #2a3244;border-radius:999px;padding:6px 10px;color:var(--muted);font-size:.9rem}
+    h1{font-size:clamp(2rem, 5vw, 3.2rem);line-height:1.15;margin:14px 0}
+    .lead{color:var(--muted);max-width:52ch}
+    .hero-actions{display:flex;gap:12px;margin:18px 0}
+    .ghost{border:1px solid #2a3244;color:var(--text);background:transparent;padding:10px 16px;border-radius:999px}
+    .hero-card{background:var(--surface);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    /* Trust */
+    .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+    .trust div{background:#0e1320;border:1px solid #2a3244;padding:14px;border-radius:14px;color:var(--muted);text-align:center}
+    @media (max-width:820px){.hero-inner{grid-template-columns:1fr}.trust{grid-template-columns:repeat(2,1fr)}}
+
+    /* Services */
+    section{padding:40px 24px}
+    .section-title{font-size:1.6rem;margin:0 0 8px}
+    .section-sub{color:var(--muted);margin-top:0}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--surface);padding:18px;border-radius:var(--radius);border:1px solid #2a3244;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px}
+    .chip{display:inline-block;background:#0e1320;border:1px solid #2a3244;padding:4px 10px;border-radius:999px;color:var(--muted);font-size:.85rem}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    /* Before/After Slider */
+    .ba{position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .ba img{width:100%;height:auto;display:block}
+    .ba .after{position:absolute;inset:0;clip-path:inset(0 0 0 50%)}
+    .ba input[type=range]{position:absolute;left:0;right:0;bottom:0;margin:0;width:100%;appearance:none;background:transparent}
+    .ba input[type=range]::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--brand);border:2px solid #0b1020;box-shadow:0 0 0 3px rgba(110,231,183,.35)}
+    .ba input[type=range]::-webkit-slider-runnable-track{height:4px;background:#2a3244}
+
+    .ba .label{position:absolute;top:10px;padding:4px 8px;border-radius:999px;background:rgba(21,25,35,.85);border:1px solid #2a3244;font-size:.8rem;color:var(--muted)}
+    .ba .label-before{left:10px}
+    .ba .label-after{right:10px}
+
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery figure{margin:0}
+    @media (max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+    /* Testimonials */
+    .quote{font-style:italic;color:var(--muted)}
+
+    /* Contact */
+    form{display:grid;gap:10px}
+    input,textarea,select{background:#0e1320;color:var(--text);border:1px solid #2a3244;border-radius:12px;padding:10px 12px}
+    label{font-size:.95rem;color:var(--muted)}
+    .note{font-size:.9rem;color:var(--muted)}
+
+    /* Footer */
+    footer{background:var(--surface);padding:28px 24px;margin-top:40px;border-top:1px solid #2a3244}
+    .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+    .social{display:flex;gap:12px}
+    .small{color:var(--muted);font-size:.9rem}
+  </style>
+
+  <!-- LocalBusiness Schema (fill placeholders) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Veronique Renovations",
+    "image": "https://your-domain.example/assets/cover.jpg",
+    "url": "https://your-domain.example/",
+    "telephone": "514-730-6609",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rigaud",
+      "addressRegion": "QC",
+      "addressCountry": "CA"
+    },
+    "areaServed": "Greater Your City Area",
+    "sameAs": [
+      "https://www.facebook.com/yourpage",
+      "https://www.instagram.com/yourhandle"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="nav container">
+      <a class="brand" href="#top" aria-label="Go to home">
+        <div class="logo">🏠</div>
+        <span>Veronique Renovations</span>
+      </a>
+      <nav>
+        <button class="menu-btn" aria-expanded="false" aria-controls="menu">Menu ▾</button>
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn" data-lang="fr" aria-pressed="false">FR</button>
+        </div>
+        <ul id="menu" role="menu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Free Estimate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container" id="top">
+      <div class="hero-inner">
+        <div>
+          <span class="badge">Before → After • Quality you can see</span>
+          <h1>Transforming homes with style and precision.</h1>
+          <p class="lead">Kitchens, bathrooms, basements, and exterior makeovers. Locally owned, detail‑obsessed, and women owned. Get a free, no‑pressure estimate.</p>
+          <div class="hero-actions">
+            <a class="cta" href="#contact">Book a consultation</a>
+            <a class="ghost" href="#projects">See our work</a>
+          </div>
+          <div class="trust">
+<!--             <div>⭐ 5‑Star Rated</div>
+            <div>🧰 Licensed & Insured</div>
+ -->            <div>⏱ On‑time delivery</div>
+            <div>🧼 Clean job sites</div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="ba" aria-label="Before and after slider">
+            <img alt="Before renovation" src="images\front before.jpg?q=80&w=1200&auto=format&fit=crop" />
+            <img class="after" alt="After renovation" src="images\front after.jpg?q=80&w=1200&auto=format&fit=crop" />
+            <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          </div>
+          <p class="note" style="margin-top:10px">Slide to compare.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">Full‑service renovations with clear scopes, transparent pricing, and craftsmanship that lasts.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Kitchen Remodels</h3>
+          <p>Cabinetry, counters, flooring, lighting, layout improvements, and smart storage.</p>
+          <span class="chip">Typical timeline: 2–4 weeks</span>
+        </article>
+        <article class="card">
+          <h3>Bathroom Upgrades</h3>
+          <p>Tile, tubs & showers, vanities, heated floors, waterproofing, and ventilation.</p>
+          <span class="chip">Typical timeline: 1–3 weeks</span>
+        </article>
+        <article class="card">
+          <h3>Basements & Exteriors</h3>
+          <p>Basement bedrooms & family rooms, painting, siding accents, soffits & fascia.</p>
+          <span class="chip">Typical timeline: Varies</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="container">
+      <h2 class="section-title">Recent Projects</h2>
+      <p class="section-sub">A quick look at transformations!</p>
+      <div class="gallery">
+      <figure>
+          <div class="ba" aria-label="Before and after slider">
+            <span class="label label-before">Before</span>
+            <span class="label label-after">After</span>
+            <img alt="Boys bedroom before" src="images\ZackBefore.JPEG?q=80&w=1200&auto=format&fit=crop" />
+            <img class="after" alt="Modern bedroom after" src="images\ZackAfter.JPEG?q=80&w=1200&auto=format&fit=crop" />
+            <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          </div>
+          <figcaption class="note">Updated Room</figcaption>
+        </figure>
+        <figure>
+          <div class="ba" aria-label="Before and after slider">
+            <span class="label label-before">Before</span>
+            <span class="label label-after">After</span>
+            <img alt="Spa‑style bathroom before" src="images\MelBefore.jpg?q=80&w=1200&auto=format&fit=crop" />
+            <img class="after" alt="Spa‑style bathroom after" src="images\MelAfter.JPEG?q=80&w=1200&auto=format&fit=crop" />
+            <input type="range" min="0" max="100" value="50" aria-label="Compare before and after">
+          </div>
+          <figcaption class="note">New and Updated Room</figcaption>
+        </figure>
+    </div>
+    </section>
+
+    <!-- Testimonials 
+    <section class="container">
+      <h2 class="section-title">Kind Words</h2>
+      <div class="grid">
+        <article class="card"><p class="quote">“Professional, punctual, and the quality is outstanding. We love our new kitchen!”</p><p class="note">— J. Martin</p></article>
+        <article class="card"><p class="quote">“Clear communication and on‑time delivery. The before/after difference is unbelievable.”</p><p class="note">— A. Nguyen</p></article>
+        <article class="card"><p class="quote">“Attention to detail on every step. We’ll definitely hire again.”</p><p class="note">— S. Roy</p></article>
+      </div>
+    </section>
+-->
+    <!-- About -->
+    <section id="about" class="container">
+      <h2 class="section-title">About</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Our Philosophy</h3>
+          <p>We believe great renovations combine thoughtful design, durable materials, and craftsmanship. What started as a personal passion project became a business focused on delivering reliable, beautiful results—on time and on budget.</p>
+        </article>
+        <article class="card">
+          <h3>Why Choose Us</h3>
+          <ul>
+            <li>Clear, itemized quotes</li>
+            <li>Respect for your time & space</li>
+            <li>Licensed & insured</li>
+            <li>Warranty on workmanship</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Service Area</h3>
+          <p>Based in <strong>Your City, QC</strong>. Serving surrounding areas. Get in touch to confirm your location.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container">
+      <h2 class="section-title">Get a Free Estimate</h2>
+      <p class="section-sub">Tell us a bit about your project and we’ll get back to you within 1–2 business days.</p>
+      <div class="grid">
+        <form action="https://formspree.io/f/your-id" method="POST" class="card">
+          <label>Your name
+            <input required type="text" name="name" placeholder="Jane Doe" />
+          </label>
+          <label>Email
+            <input required type="email" name="email" placeholder="you@example.com" />
+          </label>
+          <label>Phone (optional)
+            <input type="tel" name="phone" placeholder="(555) 555‑5555" />
+          </label>
+          <label>Service
+            <select name="service">
+              <option>Kitchen</option>
+              <option>Bathroom</option>
+              <option>Basement</option>
+              <option>Exterior</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label>Project details
+            <textarea required name="details" rows="5" placeholder="Tell us about your timeline, style, and budget range."></textarea>
+          </label>
+          <button class="cta" type="submit">Send request</button>
+          <p class="note">Powered by Formspree on the free tier. Replace the action URL with your own form endpoint.</p>
+        </form>
+        <aside class="card">
+          <h3>Contact</h3>
+          <p><strong>Email:</strong> veroniquefugere78@gmail.com<br/>
+             <strong>Phone:</strong> +1 (514) 730-6609</p>
+          <h3>Hours</h3>
+          <p>Mon–Fri: 8:00–17:00<br/>Sat: By appointment</p>
+          <!-- <h3>Follow</h3>
+          <p class="social">
+            <a href="#" aria-label="Facebook">🔗 Facebook</a>
+            <a href="#" aria-label="Instagram">🔗 Instagram</a>
+            <a href="#" aria-label="LinkedIn">🔗 LinkedIn</a>
+          </p>
+          <p class="note">Add your Google Business Profile link for reviews & local SEO.</p> -->
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot container">
+      <div class="small">© <span id="year"></span> Veronique Renovations • All rights reserved</div>
+      <div class="small">Built with ❤️ and GitHub Pages</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    const btn = document.querySelector('.menu-btn');
+    const menu = document.getElementById('menu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Before/After slider logic (supports multiple sliders including hero)
+    const bas = document.querySelectorAll('.ba');
+    bas.forEach(ba => {
+      const afterImg = ba.querySelector('.after');
+      const slider = ba.querySelector('input[type=range]');
+      if(!afterImg || !slider) return;
+      const update = () => {
+        const v = parseInt(slider.value, 10) || 0;
+        afterImg.style.clipPath = `inset(0 0 0 ${v}%)`;
+      };
+      slider.addEventListener('input', update);
+      update();
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // i18n language toggle
+    (function(){
+      const t = {
+        en: {
+          title: 'Veronique Renovations | Home Renovation & Remodeling',
+          nav: ['Services','Projects','About','Contact','Free Estimate'],
+          badge: 'Before → After • Quality you can see',
+          heroH1: 'Transforming homes with style and precision.',
+          heroLead: 'Kitchens, bathrooms, basements, and exterior makeovers. locally owned and detail‑obsessed. Get a free, no‑pressure estimate.',
+          heroCta: 'Book a consultation',
+          heroGhost: 'See our work',
+          trust: ['⏱ On‑time delivery','🧼 Clean job sites'],
+          //trust: ['⭐ 5‑Star Rated','🧰 Licensed & Insured','⏱ On‑time delivery','🧼 Clean job sites'],
+          servicesTitle: 'Services',
+          servicesSub: 'Full‑service renovations with clear scopes, transparent pricing, and craftsmanship that lasts.',
+          svc1H: 'Kitchen Remodels',
+          svc1P: 'Cabinetry, counters, flooring, lighting, layout improvements, and smart storage.',
+          svc1Chip: 'Typical timeline: 2–4 weeks',
+          svc2H: 'Bathroom Upgrades',
+          svc2P: 'Tile, tubs & showers, vanities, heated floors, waterproofing, and ventilation.',
+          svc2Chip: 'Typical timeline: 1–3 weeks',
+          svc3H: 'Basements & Exteriors',
+          svc3P: 'Basement bedrooms & family rooms, painting, siding accents, soffits & fascia.',
+          svc3Chip: 'Typical timeline: Varies',
+          projectsTitle: 'Recent Projects',
+          projectsSub: 'A quick look at transformations!',
+          cap1:'Boys bedroom total makeover', cap2:'New room, new look!', before:'Before', after:'After',
+//          cap1:'Boys bedroom total makeover', cap2:'New room, new look!', cap3:'Cozy stylish roombasement suite', cap4:'Exterior repaint', cap5:'Open‑concept living', cap6:'Bright dining nook', before:'Before', after:'After',
+          kindTitle: 'Kind Words',
+          q1:'“Professional, punctual, and the quality is outstanding. We love our new kitchen!”',
+          q2:'“Clear communication and on‑time delivery. The before/after difference is unbelievable.”',
+          q3:'“Attention to detail on every step. We’ll definitely hire again.”',
+          aboutTitle: 'About',
+          aboutH1: 'Our Philosophy',
+          aboutP1: 'We believe great renovations combine thoughtful design, durable materials, and craftsmanship. What started as a personal passion project became a business focused on delivering reliable, beautiful results—on time and on budget.',
+          aboutH2: 'Why Choose Us',
+          aboutList: ['Clear, itemized quotes','Respect for your time & space','Licensed & insured','Warranty on workmanship'],
+          aboutH3: 'Service Area',
+          aboutP3: 'Based in Your City, QC. Serving surrounding areas. Get in touch to confirm your location.',
+          contactTitle: 'Get a Free Estimate',
+          contactSub: 'Tell us a bit about your project and we’ll get back to you within 1–2 business days.',
+          formName: 'Your name', formEmail: 'Email', formPhone: 'Phone (optional)', formService: 'Service', formDetails: 'Project details',
+          optKitchen:'Kitchen', optBathroom:'Bathroom', optBasement:'Basement', optExterior:'Exterior', optOther:'Other',
+          detailsPH: 'Tell us about your timeline, style, and budget range.',
+          send: 'Send request', formNote:'Powered by Formspree on the free tier. Replace the action URL with your own form endpoint.',
+          asideContact:'Contact', asideHours:'Hours', asideFollow:'Follow',
+          asideEmail:'Email:', asidePhone:'Phone:', asideHoursText:'Mon–Fri: 8:00–17:00\nSat: By appointment', asideNote:'Add your Google Business Profile link for reviews & local SEO.'
+        },
+        fr: {
+          title: 'Veronique Rénovations | Rénovation résidentielle',
+          nav: ['Services','Projets','À propos','Contact','Soumission gratuite'],
+          badge: 'Avant → Après • Une qualité visible',
+          heroH1: 'Transformer les maisons avec style et précision.',
+          heroLead: 'Cuisines, salles de bain, sous‑sols et rénovations extérieures. Entreprise locale et souci du détail. Obtenez une soumission sans pression.',
+          heroCta: 'Réserver une consultation',
+          heroGhost: 'Voir nos réalisations',
+          //trust: ['⭐ Cote 5 étoiles','🧰 Licencié et assuré','⏱ Respect des délais','🧼 Chantiers propres'],
+          trust: ['⏱ Respect des délais','🧼 Chantiers propres'],
+          servicesTitle: 'Services',
+          servicesSub: 'Rénovations clés en main avec portées claires, tarification transparente et savoir‑faire durable.',
+          svc1H: 'Rénovations de cuisine',
+          svc1P: 'Armoires, comptoirs, planchers, éclairage, optimisation du plan et rangement intelligent.',
+          svc1Chip: 'Durée typique : 2–4 semaines',
+          svc2H: 'Salles de bain',
+          svc2P: 'Céramique, bains et douches, vanités, planchers chauffants, étanchéité et ventilation.',
+          svc2Chip: 'Durée typique : 1–3 semaines',
+          svc3H: 'Sous‑sols & Extérieur',
+          svc3P: 'Chambres et salles familiales au sous‑sol, peinture, accents de revêtement, soffites et fascia.',
+          svc3Chip: 'Durée typique : Variable',
+          projectsTitle: 'Projets récents',
+          projectsSub: 'Un aperçu des transformations. Remplacez ces images et légendes par vos projets.',
+          cap1:'Chambre moderne rafraîchie', cap2:'Nouvelle chambre, nouveau look!', before:'Avant', after:'Après',
+ //         cap1:'Chambre moderne rafraîchie', cap2:'Nouvelle chambre, nouveau look!', cap3:'Suite de sous‑sol chaleureuse', cap4:'Reprise de peinture extérieure', cap5:'Aire ouverte lumineuse', cap6:'Coin repas lumineux', before:'Avant', after:'Après',
+          kindTitle: 'Témoignages',
+          q1:'« Professionnel, ponctuel et une qualité remarquable. On adore notre nouvelle cuisine! »',
+          q2:'« Communication claire et livraison à temps. La différence avant/après est incroyable. »',
+          q3:'« Un souci du détail à chaque étape. Nous referons affaire avec eux. »',
+          aboutTitle: 'À propos',
+          aboutH1: 'Notre philosophie',
+          aboutP1: 'Nous croyons que de bonnes rénovations allient design réfléchi, matériaux durables et savoir‑faire. D’un projet personnel est née une entreprise dédiée à livrer des résultats fiables et magnifiques — à temps et selon le budget.',
+          aboutH2: 'Pourquoi nous choisir',
+          aboutList: ['Soumissions détaillées et claires','Respect de votre temps et de votre espace','Licencié et assuré','Garantie sur la main‑d’œuvre'],
+          aboutH3: 'Territoire desservi',
+          aboutP3: 'Basés à Your City, QC. Nous desservons les environs. Contactez‑nous pour confirmer votre secteur.',
+          contactTitle: 'Obtenez une soumission gratuite',
+          contactSub: 'Parlez‑nous de votre projet et nous vous répondrons sous 1 à 2 jours ouvrables.',
+          formName: 'Votre nom', formEmail: 'Courriel', formPhone: 'Téléphone (optionnel)', formService: 'Service', formDetails: 'Détails du projet',
+          optKitchen:'Cuisine', optBathroom:'Salle de bain', optBasement:'Sous‑sol', optExterior:'Extérieur', optOther:'Autre',
+          detailsPH: 'Parlez‑nous de votre échéancier, de votre style et de votre budget.',
+          send: 'Envoyer la demande', formNote:'Propulsé par Formspree (forfait gratuit). Remplacez l’URL par votre point de terminaison.',
+          asideContact:'Contact', asideHours:'Heures', asideFollow:'Suivez‑nous',
+          asideEmail:'Courriel :', asidePhone:'Téléphone :', asideHoursText:'Lun–Ven : 8 h à 17 h\nSam : Sur rendez‑vous', asideNote:'Ajoutez le lien Google Business pour les avis et le SEO local.'
+        }
+      };
+
+      function setText(sel, value){ const el = document.querySelector(sel); if(el){ el.textContent = value; } }
+      function setHTML(sel, value){ const el = document.querySelector(sel); if(el){ el.innerHTML = value; } }
+
+      function applyLang(lang){
+        const L = t[lang];
+        document.documentElement.setAttribute('lang', lang);
+        document.title = L.title;
+        // nav labels
+        const items = document.querySelectorAll('#menu li a');
+        if(items.length>=5){ items[0].textContent=L.nav[0]; items[1].textContent=L.nav[1]; items[2].textContent=L.nav[2]; items[3].textContent=L.nav[3]; items[4].textContent=L.nav[4]; }
+        // hero
+        setText('.badge', L.badge);
+        setText('.hero-inner h1', L.heroH1);
+        setText('.lead', L.heroLead);
+        setText('.hero-actions .cta', L.heroCta);
+        setText('.hero-actions .ghost', L.heroGhost);
+        const trust = document.querySelectorAll('.trust div');
+        trust.forEach((d,i)=>{ if(L.trust[i]) d.textContent=L.trust[i]; });
+        // services
+        setText('#services .section-title', L.servicesTitle);
+        setText('#services .section-sub', L.servicesSub);
+        const svcCards = document.querySelectorAll('#services .card');
+        if(svcCards.length===3){
+          svcCards[0].querySelector('h3').textContent=L.svc1H; svcCards[0].querySelector('p').textContent=L.svc1P; svcCards[0].querySelector('.chip').textContent=L.svc1Chip;
+          svcCards[1].querySelector('h3').textContent=L.svc2H; svcCards[1].querySelector('p').textContent=L.svc2P; svcCards[1].querySelector('.chip').textContent=L.svc2Chip;
+          svcCards[2].querySelector('h3').textContent=L.svc3H; svcCards[2].querySelector('p').textContent=L.svc3P; svcCards[2].querySelector('.chip').textContent=L.svc3Chip;
+        }
+        // projects
+        setText('#projects .section-title', L.projectsTitle);
+        setText('#projects .section-sub', L.projectsSub);
+        const caps = document.querySelectorAll('#projects figcaption');
+        [L.cap1,L.cap2].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
+        document.querySelectorAll('#projects .ba .label-before').forEach(el=> el.textContent = L.before);
+        document.querySelectorAll('#projects .ba .label-after').forEach(el=> el.textContent = L.after);
+//        const caps = document.querySelectorAll('#projects figcaption');
+//       [L.cap1,L.cap2,L.cap3,L.cap4,L.cap5,L.cap6].forEach((c,i)=>{ if(caps[i]) caps[i].textContent=c; });
+//        document.querySelectorAll('#projects .ba .label-before').forEach(el=> el.textContent = L.before);
+//        document.querySelectorAll('#projects .ba .label-after').forEach(el=> el.textContent = L.after);
+        // testimonials
+        const kindTitle = document.querySelectorAll('section.container .section-title');
+        if(kindTitle[2]) kindTitle[2].textContent = L.kindTitle; // assumes order
+        const q = document.querySelectorAll('.grid .card .quote');
+        if(q[0]) q[0].textContent=L.q1; if(q[1]) q[1].textContent=L.q2; if(q[2]) q[2].textContent=L.q3;
+        // about
+        setText('#about .section-title', L.aboutTitle);
+        const aboutCards = document.querySelectorAll('#about .card');
+        if(aboutCards.length===3){
+          aboutCards[0].querySelector('h3').textContent=L.aboutH1; aboutCards[0].querySelector('p').textContent=L.aboutP1;
+          aboutCards[1].querySelector('h3').textContent=L.aboutH2; const lis = aboutCards[1].querySelectorAll('li'); L.aboutList.forEach((v,i)=>{ if(lis[i]) lis[i].textContent=v; });
+          aboutCards[2].querySelector('h3').textContent=L.aboutH3; aboutCards[2].querySelector('p').textContent=L.aboutP3;
+        }
+        // contact
+        setText('#contact .section-title', L.contactTitle);
+        setText('#contact .section-sub', L.contactSub);
+        const form = document.querySelector('#contact form');
+        if(form){
+          form.querySelector('label:nth-of-type(1)').childNodes[0].textContent = L.formName + '\n';
+          form.querySelector('label:nth-of-type(2)').childNodes[0].textContent = L.formEmail + '\n';
+          form.querySelector('label:nth-of-type(3)').childNodes[0].textContent = L.formPhone + '\n';
+          form.querySelector('label:nth-of-type(4)').childNodes[0].textContent = L.formService + '\n';
+          form.querySelector('label:nth-of-type(5)').childNodes[0].textContent = L.formDetails + '\n';
+          const opts = form.querySelectorAll('select option');
+          if(opts.length>=5){ opts[0].textContent=L.optKitchen; opts[1].textContent=L.optBathroom; opts[2].textContent=L.optBasement; opts[3].textContent=L.optExterior; opts[4].textContent=L.optOther; }
+          const ta = form.querySelector('textarea'); if(ta) ta.setAttribute('placeholder', L.detailsPH);
+          const btn = form.querySelector('button[type=submit]'); if(btn) btn.textContent=L.send;
+          const note = form.querySelector('.note'); if(note) note.textContent=L.formNote;
+        }
+        const aside = document.querySelector('#contact aside');
+        if(aside){
+          aside.querySelector('h3:nth-of-type(1)').textContent=L.asideContact;
+          aside.querySelector('p:nth-of-type(1)').innerHTML = `<strong>${L.asideEmail}</strong> veroniquevufere78@gmail.com<br/><strong>${L.asidePhone}</strong> +1 (514) 730-6609`;
+          aside.querySelector('h3:nth-of-type(2)').textContent=L.asideHours;
+          aside.querySelector('p:nth-of-type(2)').textContent=L.asideHoursText;
+          aside.querySelector('h3:nth-of-type(3)').textContent=L.asideFollow;
+          const note2 = aside.querySelector('p.note'); if(note2) note2.textContent = L.asideNote;
+        }
+      }
+
+      // toggle UI
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(b=> b.addEventListener('click', ()=>{
+        const lang = b.dataset.lang;
+        langBtns.forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+        applyLang(lang);
+        try{ localStorage.setItem('site-lang', lang); }catch(e){}
+      }));
+
+      const saved = (function(){try{return localStorage.getItem('site-lang');}catch(e){return null;}})();
+      applyLang(saved||'en');
+    })();
+</script>
+</body>
+</html>
